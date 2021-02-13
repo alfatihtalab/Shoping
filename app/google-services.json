@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "959856811858",
+    "project_id": "shopy-966d0",
+    "storage_bucket": "shopy-966d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959856811858:android:d46cd694b2e00e6f7ea48b",
+        "android_client_info": {
+          "package_name": "com.alfatih.shoping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959856811858-ludg56jqvq6fbvtdvevgpb6d66913dne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_dEAFlajoCN3siI_0w5x1oPOWUHzbbv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959856811858-ludg56jqvq6fbvtdvevgpb6d66913dne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
