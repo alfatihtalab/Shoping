@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shoping">
-        <activity android:name=".main.WelcomeActivity"></activity>
+        <activity android:name=".main.WelcomeActivity" />
         <activity android:name=".LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".auth.AuthActivity" />
-        <activity android:name=".home.HomeActivity"></activity>
+        <activity android:name=".home.HomeActivity"
+            android:theme="@style/Theme.Shoping.NoActionBar"/>
     </application>
 
 </manifest>

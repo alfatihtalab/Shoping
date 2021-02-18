@@ -11,11 +11,6 @@ open class FragmentTest {
         2 to SignInFragment()
     )
 
-
-
-
-
-
 }
 fun main(){
     val lambda : (Int , Int) -> Int = {a: Int , b:Int -> a+b }

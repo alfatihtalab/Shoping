@@ -1,21 +1,16 @@
 package com.alfatih.shoping
-
-import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.alfatih.shoping.auth.UserFirebase
 import com.alfatih.shoping.databinding.ActivityLauncherBinding
 import com.alfatih.shoping.home.HomeActivity
 import com.alfatih.shoping.main.WelcomeActivity
-import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 

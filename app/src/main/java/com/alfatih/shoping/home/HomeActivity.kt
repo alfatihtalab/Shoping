@@ -1,16 +1,14 @@
 package com.alfatih.shoping.home
-
-import android.os.Build
+import android.content.ClipData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
-import android.view.SearchEvent
-import android.view.View
-import android.widget.Toast
-import androidx.appcompat.widget.SearchView
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.alfatih.shoping.R
+import com.alfatih.shoping.auth.UserFirebase
 import com.alfatih.shoping.databinding.ActivityHomeBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
@@ -26,9 +24,13 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(findViewById(R.id.my_toolbar))
-        val fragmentTest = FragmentTest()
+        //val fragmentTest = FragmentTest()
 
-
+        val finalHost = NavHostFragment.create(R.navigation.home_nav)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment, finalHost)
+            .setPrimaryNavigationFragment(finalHost) // equivalent to app:defaultNavHost="true"
+            .commit()
 
     }
 
@@ -61,6 +63,7 @@ class HomeActivity : AppCompatActivity() {
 
     }
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+
         R.id.action_shopping -> {
             // User chose the "Settings" item, show the app settings UI...
             true
@@ -69,6 +72,17 @@ class HomeActivity : AppCompatActivity() {
         R.id.action_search -> {
             // User chose the "Favorite" action, mark the current item
             // as a favorite...
+            true
+        }
+        R.id.action_setting ->{
+           findNavController(R.id.nav_host_fragment)
+               .navigate(R.id.settingFragment)
+            true
+        }
+        R.id.action_sign_out -> {
+            val userFirebase = UserFirebase()
+
+            userFirebase.signOut(this,this)
             true
         }
 

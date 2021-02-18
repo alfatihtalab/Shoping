@@ -8,11 +8,19 @@
         android:icon="@drawable/shopping_cart"
         android:title="shopping"
         app:showAsAction="always"
-        android:orderInCategory="2"/>
+        android:orderInCategory="3"/>
 
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_search"
         android:icon="@drawable/baseline_search"
         android:title="search"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
+    <item android:id="@+id/action_setting"
+        android:title="setting"
+        android:orderInCategory="1"
+        app:showAsAction="never"/>
+    <item android:id="@+id/action_sign_out"
+        android:title="sign out"
+        android:orderInCategory="2"
+        app:showAsAction="never"/>
 </menu>

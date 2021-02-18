@@ -7,9 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
-import com.alfatih.shoping.LauncherActivity
 import com.alfatih.shoping.R
 import com.alfatih.shoping.home.HomeActivity
 import com.firebase.ui.auth.IdpResponse
