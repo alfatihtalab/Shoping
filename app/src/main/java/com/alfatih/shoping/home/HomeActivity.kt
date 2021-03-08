@@ -1,10 +1,8 @@
 package com.alfatih.shoping.home
-import android.content.ClipData
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.navigation.NavController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.alfatih.shoping.R
@@ -12,12 +10,17 @@ import com.alfatih.shoping.auth.UserFirebase
 import com.alfatih.shoping.databinding.ActivityHomeBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class HomeActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityHomeBinding
+    private lateinit var binding: ActivityHomeBinding
 
     var TIME = 5000 //5000 ms (5 Seconds)
     val authUI = FirebaseAuth.getInstance(FirebaseApp.getInstance())
+
+    // Access a Cloud Firestore instance from your Activity
+    val db = Firebase.firestore
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

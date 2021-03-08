@@ -3,12 +3,12 @@ package com.alfatih.shoping.main
 import android.app.Activity
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import com.alfatih.shoping.R
-import com.alfatih.shoping.home.HomeActivity
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 
@@ -33,7 +33,11 @@ class WelcomeActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 // Successfully signed in
                 val user = FirebaseAuth.getInstance().currentUser
-                startActivity(Intent(this, HomeActivity::class.java))
+                //startActivity(Intent(this, HomeActivity::class.java))
+                findNavController(R.id.nav_host_fragment).navigate(
+                    R.id.action_welcome_to_accountTypeFragment
+                )
+                //this.finish()
                 // ...
             } else {
                 // Sign in failed. If response is null the user canceled the
@@ -49,4 +53,5 @@ class WelcomeActivity : AppCompatActivity() {
 
         private const val RC_SIGN_IN = 123
     }
+
 }

@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav"
     app:startDestination="@id/welcome">
 
+
+    <fragment
+        android:id="@+id/accountTypeFragment"
+        android:name="com.alfatih.shoping.main.accountype.AccountTypeFragment"
+        android:label="AccountTypeFragment" />
     <fragment
         android:id="@+id/welcome"
         android:name="com.alfatih.shoping.main.Welcome"
-        android:label="Welcome" />
+        android:label="Welcome">
+        <action
+            android:id="@+id/action_welcome_to_accountTypeFragment"
+            app:destination="@id/accountTypeFragment"
+            app:popUpTo="@id/welcome"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>

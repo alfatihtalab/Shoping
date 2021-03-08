@@ -1,5 +1,7 @@
 package com.alfatih.shoping
 import android.content.Intent
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -14,8 +16,12 @@ import com.alfatih.shoping.main.WelcomeActivity
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 
-class LauncherActivity : AppCompatActivity(){
+class LauncherActivity : AppCompatActivity() {
     private lateinit var launcherBinding: ActivityLauncherBinding
+
+    val mediaPlayer: MediaPlayer by lazy {
+        MediaPlayer.create(this, R.raw.shopy)
+    }
     private var userFirebase = UserFirebase()
     private val user = FirebaseAuth.getInstance(FirebaseApp.getInstance()).currentUser
 
@@ -33,19 +39,20 @@ class LauncherActivity : AppCompatActivity(){
             // status bar is hidden, so hide that too if necessary.
             actionBar?.hide()
         }
-
+        val path = "android.resource://" + "com.alfatih.shoping" + "/" + R.raw.shopy_3
 
         launcherBinding = DataBindingUtil.setContentView(this, R.layout.activity_launcher)
-
+        launcherBinding.videoView.setVideoURI(Uri.parse(path))
 
         if(user != null){
                 startActivity(Intent(this,HomeActivity::class.java))
             }else{
+            launcherBinding.videoView.start()
             Handler().postDelayed(
                 {
-                startActivity(Intent(this,WelcomeActivity::class.java))
-            },5000
-        )}
+                    startActivity(Intent(this, WelcomeActivity::class.java))
+                }, 6000
+            )}
 
         //userFirebase.checkCurrentUser(user,this, HomeActivity::class.java,this)
         //userFirebase.themeAndLogo()

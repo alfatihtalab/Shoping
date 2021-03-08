@@ -4,24 +4,14 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Parcel
-import android.os.Parcelable
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import com.alfatih.shoping.R
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.data.model.User
-import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
-import java.util.*
 
 open class UserFirebase: AppCompatActivity(){
     var TIME = 5000 //5000 ms (5 Seconds)
@@ -118,6 +108,7 @@ open class UserFirebase: AppCompatActivity(){
             .signOut(context)
             .addOnCompleteListener {
                 // ...
+                //startActivity(Intent(context,activity))
                 activity.finish()
             }
         // [END auth_fui_signout]

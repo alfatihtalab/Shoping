@@ -1,18 +1,15 @@
 package com.alfatih.shoping.home
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.activity.addCallback
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.adapter.FragmentViewHolder
 import androidx.viewpager2.widget.ViewPager2
-import com.alfatih.shoping.LauncherActivity
-import com.alfatih.shoping.R
 import com.alfatih.shoping.databinding.HomeScreenFragmentBinding
 import com.alfatih.shoping.home.testFragment.TestFragment
 import com.alfatih.shoping.home.testFragment.TestTwoFragment
@@ -54,11 +51,16 @@ class HomeScreenFragment : Fragment() {
         val fm_list = listOf<Fragment>(TestFragment(),TestTwoFragment())
         demoCollectionAdapter = DemoAdapter(fm_list,this)
         viewPager = binding.pager
+
         viewPager.adapter = demoCollectionAdapter
         val tabLayout = binding.tabLayout
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = "OBJECT ${(position + 1)}"
+            when (position + 1) {
+                1 -> tab.text = "Home"
+                2 -> tab.text = "firebase"
+            }
         }.attach()
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
