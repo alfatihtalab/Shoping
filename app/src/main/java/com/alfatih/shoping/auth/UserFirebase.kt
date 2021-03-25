@@ -17,7 +17,12 @@ open class UserFirebase: AppCompatActivity(){
     var TIME = 5000 //5000 ms (5 Seconds)
 
     //Get the currently signed-in user
-    fun checkCurrentUser(user: FirebaseUser?, context: Context,cls :Class<*>,activity: Activity) {
+    fun checkCurrentUser(
+        user: FirebaseUser?,
+        context: Context,
+        cls: Class<*>,
+        activity: Activity,
+    ) {
         if (user != null) {
             //start the main activity
             startActivity(context, cls, activity)
@@ -62,13 +67,19 @@ open class UserFirebase: AppCompatActivity(){
 
     }
 
-    fun updateProfile(user: FirebaseUser?,
-                          context: Context, name: String,progressBar: ProgressBar, imageView: ImageView){
+    fun updateProfile(
+        user: FirebaseUser?,
+        context: Context,
+        name: String, progressBar: ProgressBar,
+        imageView: ImageView,
+    ) {
 
         progressBar.visibility = View.VISIBLE
         val profileUpdates = UserProfileChangeRequest.Builder()
             .setDisplayName(name)
-            .setPhotoUri(Uri.parse("https://scontent.fkrt2-2.fna.fbcdn.net/v/t1.0-9/122517209_2754811221289104_8609602280647281667_o.jpg?_nc_cat=105&ccb=3&_nc_sid=09cbfe&_nc_eui2=AeEhJ0IF172x5FjysPk2GbKLvxeQoyQSPbm_F5CjJBI9udoQqg7cYCNa6Dhp-nqeGyLNsRSKTawai-DyJrVBwHo1&_nc_ohc=cU6m9x5B1rIAX-KlPJx&_nc_oc=AQmlJh8ay5FjIiOVs7LNh6LXvYlrR0uPv_8mN-RMnUXLR6hQO4LgzEzMvkoGqXPMSV8&_nc_ht=scontent.fkrt2-2.fna&oh=8458dafe3500eef6c1392409c2faa008&oe=604CDA62"))
+            .setPhotoUri(
+                Uri.parse(
+                    "https://scontent.fkrt2-2.fna.fbcdn.net/v/t1.0-9/122517209_2754811221289104_8609602280647281667_o.jpg?_nc_cat=105&ccb=3&_nc_sid=09cbfe&_nc_eui2=AeEhJ0IF172x5FjysPk2GbKLvxeQoyQSPbm_F5CjJBI9udoQqg7cYCNa6Dhp-nqeGyLNsRSKTawai-DyJrVBwHo1&_nc_ohc=cU6m9x5B1rIAX-KlPJx&_nc_oc=AQmlJh8ay5FjIiOVs7LNh6LXvYlrR0uPv_8mN-RMnUXLR6hQO4LgzEzMvkoGqXPMSV8&_nc_ht=scontent.fkrt2-2.fna&oh=8458dafe3500eef6c1392409c2faa008&oe=604CDA62"))
             .build()
 
         user!!.updateProfile(profileUpdates)
@@ -135,12 +146,18 @@ open class UserFirebase: AppCompatActivity(){
             }
     }
 
-    fun startActivity (a: Context,b:Class<*>, activity: Activity):
-            Unit {activity.startActivity(Intent(a,b))}
+    fun startActivity(a: Context, b: Class<*>, activity: Activity):
+            Unit {
+        activity.startActivity(Intent(a, b))
+    }
 
     val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
-    val lambda :(Context,Class<*>,Activity) -> Unit = {context, clazz, activity -> activity.startActivity(Intent(context,clazz)) }
-    val sum2 = {context:Context, cls:Class<*>, activity:Activity -> activity.startActivity(Intent(context,cls)) }
+    val lambda: (Context, Class<*>, Activity) -> Unit =
+        { context, clazz, activity -> activity.startActivity(Intent(context, clazz)) }
+    val sum2 = { context: Context, cls: Class<*>, activity: Activity ->
+        activity.startActivity(Intent(context, cls))
+    }
+
     companion object {
 
         private const val RC_SIGN_IN = 123

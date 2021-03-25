@@ -12,7 +12,7 @@ import androidx.viewpager2.adapter.FragmentViewHolder
 import androidx.viewpager2.widget.ViewPager2
 import com.alfatih.shoping.databinding.HomeScreenFragmentBinding
 import com.alfatih.shoping.home.testFragment.TestFragment
-import com.alfatih.shoping.home.testFragment.TestTwoFragment
+import com.alfatih.shoping.trader.add_product.AddProductFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -48,7 +48,7 @@ class HomeScreenFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val fm_list = listOf<Fragment>(TestFragment(),TestTwoFragment())
+        val fm_list = listOf<Fragment>(TestFragment(), AddProductFragment())
         demoCollectionAdapter = DemoAdapter(fm_list,this)
         viewPager = binding.pager
 
@@ -57,7 +57,7 @@ class HomeScreenFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position + 1) {
                 1 -> tab.text = "Home"
-                2 -> tab.text = "firebase"
+                2 -> tab.text = "add product"
             }
         }.attach()
 

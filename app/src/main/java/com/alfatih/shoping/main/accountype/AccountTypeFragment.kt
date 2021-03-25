@@ -32,7 +32,9 @@ class AccountTypeFragment : Fragment() {
 
         binding = AccountTypeFragmentBinding.inflate(inflater, container, false)
         binding.shoperBtn.setOnClickListener {
-
+            viewModel.changeAccount("shopper")
+            addUser(viewModel.account.value)
+            startActivity(Intent(requireContext(), HomeActivity::class.java))
         }
         binding.traderBtn.setOnClickListener {
             viewModel.changeAccount("trader")
@@ -57,11 +59,11 @@ class AccountTypeFragment : Fragment() {
         val user = hashMapOf(
             "name" to FirebaseAuth.getInstance().currentUser?.displayName.toString(),
             "email" to FirebaseAuth.getInstance().currentUser?.email.toString(),
-            "account type" to accountType,
+            "account_type" to accountType,
             "uid" to FirebaseAuth.getInstance().currentUser?.uid
         )
-        db.collection("users")
-            .add(user)
+        db.collection("users").document(user["uid"]!!)
+            .set(user)
             .addOnSuccessListener { documentReference ->
                 Toast.makeText(requireContext(),
                     "successful", Toast.LENGTH_SHORT).show()

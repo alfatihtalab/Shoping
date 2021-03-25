@@ -55,16 +55,6 @@ class TestTwoFragment: Fragment() {
         // Inflate the layout for this fragment
         testBinding = FragmentTwoTestBinding.inflate(inflater, container, false)
 
-        testBinding.buttonCollection.setOnClickListener {
-            collection = testBinding.editTextCollection.text.toString()
-            var userProfile = FirebaseAuth.getInstance().currentUser
-            val user = hashMapOf(
-                "name" to userProfile?.displayName.toString(),
-                "email" to userProfile?.email.toString(),
-                "born" to 1993
-            )
-            usersDatabase.addCollection(collection, user, requireContext())
-        }
         return testBinding.root
     }
 }

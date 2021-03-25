@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 class SettingFragment : Fragment() {
     val currentUser = FirebaseAuth.getInstance().currentUser
 
+
     companion object {
         fun newInstance() = SettingFragment()
     }

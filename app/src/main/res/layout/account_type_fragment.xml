@@ -48,7 +48,7 @@
             android:id="@+id/shoper_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shoper"
+            android:text="shopper"
             app:backgroundTint="#EC407A"
             app:layout_constraintBottom_toBottomOf="@+id/trader_btn"
             app:layout_constraintEnd_toEndOf="parent"

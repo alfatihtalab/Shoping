@@ -9,10 +9,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.alfatih.shoping.R
+import com.alfatih.shoping.home.HomeActivity
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class WelcomeActivity : AppCompatActivity() {
+    val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
@@ -33,12 +37,31 @@ class WelcomeActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 // Successfully signed in
                 val user = FirebaseAuth.getInstance().currentUser
-                //startActivity(Intent(this, HomeActivity::class.java))
-                findNavController(R.id.nav_host_fragment).navigate(
-                    R.id.action_welcome_to_accountTypeFragment
-                )
-                //this.finish()
-                // ...
+                //checking the document user
+                val docRef = db.collection("users").document(user!!.uid)
+                docRef.get()
+                    .addOnSuccessListener { document ->
+                        if (document != null) {
+                            Toast.makeText(applicationContext,
+                                "document is found",
+                                Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, HomeActivity::class.java))
+                        } else {
+                            Toast.makeText(applicationContext,
+                                "no such document",
+                                Toast.LENGTH_SHORT).show()
+                            findNavController(R.id.nav_host_fragment).navigate(
+                                R.id.action_welcome_to_accountTypeFragment
+                            )
+                        }
+                    }
+                    .addOnFailureListener { exception ->
+                        Toast.makeText(applicationContext,
+                            "exception: $exception",
+                            Toast.LENGTH_SHORT).show()
+                    }
+
+
             } else {
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check
